@@ -5,4 +5,13 @@ from django.http import HttpResponse
 
 
 def index(response):
-    return HttpResponse("Hello World!")
+    return render(response, 'mlg/base.html', {})
+
+
+def home(response):
+    return render(response, 'mlg/home.html', {"name": '1'})
+
+
+def model(response, id):
+    # ls = ToDoList.objects.get(id=id)
+    return render(response, 'mlg/home.html', {"name": str(id)})
