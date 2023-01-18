@@ -1,0 +1,12 @@
+{% extends 'mlg/base.html' %}
+
+{% block title %}Create a user{% endblock %}
+
+{% block content %}
+
+<form method='post' action="'/create/">
+    {{form.as_p}}
+    <button type='submit' name='save'>Create new user</button>
+</form>
+
+{% endblock %}
