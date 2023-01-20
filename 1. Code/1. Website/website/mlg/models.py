@@ -11,11 +11,20 @@ class Users(models.Model):
     def __str__(self):
         return self.firstname
 
+class Projects(models.Model):
+    user                   = models.ForeignKey(Users, on_delete = models.CASCADE)
+    name                   = models.CharField(max_length = 200)
+    comment                = models.CharField(max_length = 1000)
+    date_last_modification = models.DateField()
+
+    def __str__(self):
+        return self.name
+
 class Actions(models.Model):
-    user   = models.ForeignKey(Users, on_delete = models.CASCADE)
-    name   = models.CharField(max_length = 200)
-    repeat = models.IntegerField(default = 1)
-    ignore = models.BooleanField(default = False)
+    project = models.ForeignKey(Projects, on_delete = models.CASCADE)
+    name    = models.CharField(max_length = 200)
+    repeat  = models.IntegerField(default = 1)
+    ignore  = models.BooleanField(default = False)
 
     def __str__(self):
         return self.name
@@ -25,3 +34,6 @@ class Parameters(models.Model):
     key     = models.CharField(max_length = 200)
     value   = models.CharField(max_length = 200)
     comment = models.CharField(max_length = 1000)
+    
+    def __str__(self):
+        return self.key

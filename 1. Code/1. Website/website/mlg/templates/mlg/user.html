@@ -1,0 +1,11 @@
+{% extends 'mlg/base.html' %}
+
+
+{% block content %}
+    <h1>{{us.firstname}} {{us.lastname}}</h1>
+    <ul>
+        {% for item in us.item_set.all %}
+            <li>{{item.name}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
