@@ -3,9 +3,14 @@
 
 {% block content %}
     <h1>{{us.firstname}} {{us.lastname}}</h1>
-    <ul>
-        {% for item in us.item_set.all %}
-            <li>{{item.name}}</li>
-        {% endfor %}
-    </ul>
+    <form method = "post" action = "#">
+        {% csrf_token %}
+        <ul>
+            {% for item in us.projects_set.all %}
+                <li><a href="/project/{{item.id}}">{{item.name}}</a></li>
+            {% endfor %}
+        </ul>
+        <input type="text", name="projectName">
+        <button type="submit", name="createProject", value="createProject">Create</button>
+    </form>
 {% endblock %}

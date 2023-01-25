@@ -1,0 +1,16 @@
+{% extends 'mlg/base.html' %}
+
+
+{% block content %}
+    <h1>{{pr.name}}</h1>
+    <form method = "post" action = "#">
+        {% csrf_token %}
+        <ul>
+            {% for item in us.actions_set.all %}
+                <li><a href="/{{item.id}}">{{item.name}}</a></li>
+            {% endfor %}
+        </ul>
+        <input type="text", name="actionName">
+        <button type="submit", name="createAction", value="createAction">Create</button>
+    </form>
+{% endblock %}
